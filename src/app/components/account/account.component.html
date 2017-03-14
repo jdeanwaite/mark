@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <md-toolbar color="primary">
+        <button md-icon-button (click)="sidenavService.toggle()">
+            <md-icon>menu</md-icon>
+        </button>
+        <span class="fill-remaining-space"></span>
+        <span>Mark</span>
+        <span class="fill-remaining-space"></span>
+        <md-menu #addMenu="mdMenu">
+            <button md-menu-item>Add Transaction</button>
+        </md-menu>
+        <button md-icon-button [mdMenuTriggerFor]="addMenu">
+            <md-icon>add</md-icon>
+        </button>
+    </md-toolbar>
+
+    <md-toolbar>
+        <button md-icon-button (click)="router.navigate(['/dashboard'])">
+            <md-icon>arrow_back</md-icon>
+        </button>
+        <span class="fill-remaining-space"></span>
+        <span>{{account && account.name}}</span>
+        <span class="fill-remaining-space"></span>
+        <md-menu #moreMenu="mdMenu">
+            <button md-menu-item routerLink="/transfer">Transfer Money</button>
+            <button md-menu-item routerLink="/account/{{account.id}}/edit">Edit</button>
+        </md-menu>
+        <button md-icon-button [mdMenuTriggerFor]="moreMenu">
+            <md-icon>more_vert</md-icon>
+        </button>
+    </md-toolbar>
+
+    <div class="content">
+        <md-list>
+            <md-list-item *ngFor="let transaction of transactions">
+                <md-icon md-list-avatar>{{ (transaction.type == transactionType.income) ? 'add' : 'remove'}}
+                </md-icon>
+                <h4 md-line>{{transaction.amount | currency:'USD':true}}</h4>
+                <p md-line> {{transaction.description}} </p>
+                <span class="list-right">{{transaction.date | date:'shortDate'}}</span>
+            </md-list-item>
+        </md-list>
+    </div>
+
+    <md-toolbar>
+        <span class="fill-remaining-space"></span>
+        {{account.balance | currency:'USD':true}}
+        <span class="fill-remaining-space"></span>
+    </md-toolbar>
+</div>

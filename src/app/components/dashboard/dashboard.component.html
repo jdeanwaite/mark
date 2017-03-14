@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <md-toolbar color="primary">
+        <button md-icon-button (click)="sidenavService.toggle()">
+            <md-icon>menu</md-icon>
+        </button>
+        <span class="fill-remaining-space"></span>
+        <span>Mark</span>
+        <span class="fill-remaining-space"></span>
+        <md-menu #addMenu="mdMenu">
+            <button md-menu-item routerLink="/newAccount">Add Account</button>
+            <button md-menu-item routerLink="/transaction">Add Transaction</button>
+        </md-menu>
+        <button md-icon-button [mdMenuTriggerFor]="addMenu">
+            <md-icon>add</md-icon>
+        </button>
+    </md-toolbar>
+
+    <div class="content">
+        <app-budget-card *ngFor="let account of accounts" [account]="account"></app-budget-card>
+    </div>
+
+    <md-toolbar>
+        <span class="fill-remaining-space"></span>
+        {{totalBalance | currency:'USD':true}}
+        <span class="fill-remaining-space"></span>
+    </md-toolbar>
+
+</div>

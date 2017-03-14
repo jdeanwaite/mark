@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenavService.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+    <span class="fill-remaining-space"></span>
+    <span>Mark</span>
+    <span class="fill-remaining-space"></span>
+    <span class="toolbar-button-placeholder"></span>
+  </md-toolbar>
+
+  <md-toolbar>
+    <button md-icon-button (click)="router.navigate(['/dashboard'])">
+      <md-icon>arrow_back</md-icon>
+    </button>
+    <span class="fill-remaining-space"></span>
+    <span>Edit Account</span>
+    <span class="fill-remaining-space"></span>
+    <span class="toolbar-button-placeholder"></span>
+  </md-toolbar>
+
+  <div class="content-30">
+    <form>
+      <md-input-container>
+        <input mdInput type="text" placeholder="Account Name" step="any">
+      </md-input-container>
+    </form>
+  </div>
+
+  <div class="error-message-container">
+    <span class="error-message">{{errorMessage}}</span>
+  </div>
+
+  <button color="accent" md-raised-button [disabled]="true" (click)="editAccount()">Create</button>
+</div>

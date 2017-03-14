@@ -1,0 +1,16 @@
+<md-card (click)="viewAccount()">
+    <md-card-title-group>
+        <md-card-title>
+            {{account.name}}
+        </md-card-title>
+
+        <md-menu #moreMenu="mdMenu">
+            <button md-menu-item routerLink="/account/{{account.id}}">View</button>
+            <button md-menu-item routerLink="/account/{{account.id}}/edit">Edit</button>
+        </md-menu>
+        <button md-icon-button [mdMenuTriggerFor]="moreMenu" (click)="$event.stopPropagation();">
+            <md-icon>more_vert</md-icon>
+        </button>
+    </md-card-title-group>
+    <md-card-content>{{account.balance | currency:'USD':true}}</md-card-content>
+</md-card>

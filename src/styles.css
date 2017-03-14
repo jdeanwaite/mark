@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+
+body {
+    background-color: #eaeaea;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /*align-items: stretch;*/
+}
+
+.content {
+    flex: 1 1 auto;
+    /*margin: 10px;*/
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.content-30 {
+    flex: 1 1 auto;
+    /*margin: 10px;*/
+    padding: 30px;
+    overflow-y: scroll;
+}
+
+.footer {
+    min-height: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, .10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-columns {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 5px;
+}
+
+.toolbar-button-placeholder {
+    width: 40px;
+    height: 40px;
+}
+
+span[mdPrefix] {
+    /*color: #9B9B9B;*/
+}

@@ -1,0 +1,8 @@
+md-input-container {
+    width: 100%;
+    margin-top: 15px;
+}
+
+button {
+    min-height: 50px;
+}

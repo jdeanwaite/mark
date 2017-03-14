@@ -1,0 +1,10 @@
+md-sidenav {
+    width: 300px;
+    max-width: 90%;
+    background-color: #3E51B8;
+    color: white;
+}
+
+md-nav-list md-list-item {
+    color: #ffffff;
+}

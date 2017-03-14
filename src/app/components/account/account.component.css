@@ -1,0 +1,6 @@
+.list-right {
+    position: relative;
+    top: -10px;
+    font-size: .8em;
+    color: rgba(0, 0, 0, .5);
+}

@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <md-toolbar color="primary">
+        <button md-icon-button (click)="sidenavService.toggle()">
+            <md-icon>menu</md-icon>
+        </button>
+        <span class="fill-remaining-space"></span>
+        <span>Mark</span>
+        <span class="fill-remaining-space"></span>
+        <span class="toolbar-button-placeholder"></span>
+    </md-toolbar>
+
+    <md-toolbar>
+        <button md-icon-button (click)="router.navigate(['/dashboard'])">
+            <md-icon>arrow_back</md-icon>
+        </button>
+        <span class="fill-remaining-space"></span>
+        <span>Deposit Check</span>
+        <span class="fill-remaining-space"></span>
+        <span class="toolbar-button-placeholder"></span>
+    </md-toolbar>
+
+    <div class="content-30">
+        <form>
+            <md-input-container>
+                <span md-prefix>$</span>
+                <input mdInput type="number" placeholder="&nbsp;Check Amount" step="any">
+            </md-input-container>
+
+            <md-grid-list cols="2" rowHeight="55px;">
+        <span *ngFor="let account of accounts">
+          <md-grid-tile style="justify-content: left;">
+            <div style="width: 100%; align-self: flex-end;">
+                <span style="position: relative; top: -4px; color: rgba(0, 0, 0, .5);">{{account.name}}</span>
+            </div>
+          </md-grid-tile>
+          <md-grid-tile>
+            <md-input-container style="align-self: flex-start">
+              <span md-prefix>$</span>
+              <input mdInput type="number" placeholder="&nbsp;Amount" step="any">
+            </md-input-container>
+          </md-grid-tile>
+        </span>
+            </md-grid-list>
+        </form>
+    </div>
+
+    <div class="error-message-container">
+        <span class="error-message">{{errorMessage}}</span>
+    </div>
+
+    <button color="accent" md-raised-button [disabled]="true" (click)="depositCheck()">Deposit</button>
+</div>

@@ -7,7 +7,7 @@
         <span>Mark</span>
         <span class="fill-remaining-space"></span>
         <md-menu #addMenu="mdMenu">
-            <button md-menu-item>Add Transaction</button>
+            <button md-menu-item routerLink="/transaction">Add Transaction</button>
         </md-menu>
         <button md-icon-button [mdMenuTriggerFor]="addMenu">
             <md-icon>add</md-icon>
@@ -30,7 +30,7 @@
         </button>
     </md-toolbar>
 
-    <div class="content">
+    <div class="content-white">
         <md-list>
             <md-list-item *ngFor="let transaction of transactions">
                 <md-icon md-list-avatar>{{ (transaction.type == transactionType.income) ? 'add' : 'remove'}}

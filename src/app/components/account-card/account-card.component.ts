@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Account} from "../../classes/account";
 import {Router} from "@angular/router";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'app-budget-card',
@@ -12,16 +13,20 @@ export class AccountCardComponent implements OnInit {
   @Input('account')
   public account: Account;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public accountService: AccountService) {
   }
 
   ngOnInit() {
-
+    this.account.balance = this.accountService.getBalance(this.account);
   }
 
   viewAccount() {
-    console.log('viewing account');
     this.router.navigate([`account/${this.account.id}`])
+  }
+
+  editAccount() {
+    console.log('editing account');
+    this.router.navigate([`account/${this.account.id}/edit`]);
   }
 
 }

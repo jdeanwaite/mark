@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {SidenavService} from "../../services/sidenav.service";
 import {Account} from "../../classes/account";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {Transaction} from "../../classes/transaction";
 import {TransactionType} from "../../enums/transaction-type";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'app-account',
@@ -15,31 +16,21 @@ export class AccountComponent implements OnInit {
   account: Account;
   transactions: Transaction[] = [];
   transactionType:any = TransactionType;
+  addTransactionLink: string = "/transaction";
 
-  constructor(public sidenavService: SidenavService, private router: Router) {
+  constructor(public sidenavService: SidenavService, private router: Router, private activatedRoute: ActivatedRoute, public accountService: AccountService) {
   }
 
   ngOnInit() {
-    this.account = {
-      name: 'Account 1',
-      id: '1',
-      balance: 20.00
-    };
+    this.activatedRoute.params.subscribe(params => {
+      this.account = this.accountService.getAccount(params["id"]);
+      this.addTransactionLink += `/${this.account.id}`;
+      this.account.balance = this.accountService.getBalance(this.account);
 
-    this.transactions = [
-      {
-        type: TransactionType.expense,
-        amount: 20.00,
-        description: "Pizza",
-        date: new Date(),
-      },
-      {
-        type: TransactionType.income,
-        amount: 50.00,
-        description: "Pay check",
-        date: new Date(),
-      }
-    ];
+      this.account.transactions.sort((a, b) => {
+        return +(new Date(b.date)) - +(new Date(a.date));
+      })
+    });
   }
 
 }

@@ -17,6 +17,9 @@
 
     <div class="content">
         <app-budget-card *ngFor="let account of accounts" [account]="account"></app-budget-card>
+        <div *ngIf="accounts.length == 0" style="text-align: center; margin-top: 40px; color: rgba(0, 0, 0, .5);">
+            Tap the "+" icon to add an account.
+        </div>
     </div>
 
     <md-toolbar>

@@ -23,7 +23,7 @@
         <form>
             <md-input-container>
                 <span md-prefix>$</span>
-                <input mdInput type="number" placeholder="&nbsp;Check Amount" step="any">
+                <input mdInput type="number" placeholder="&nbsp;Check Amount" step="any" name="depositAmount" [(ngModel)]="depositAmount">
             </md-input-container>
 
             <md-grid-list cols="2" rowHeight="55px;">
@@ -36,7 +36,7 @@
           <md-grid-tile>
             <md-input-container style="align-self: flex-start">
               <span md-prefix>$</span>
-              <input mdInput type="number" placeholder="&nbsp;Amount" step="any">
+              <input mdInput type="number" placeholder="&nbsp;Amount" step="any" [(ngModel)]="accountAmounts[account.id]" name="account{{account.id}}" (input)="inputChanged()">
             </md-input-container>
           </md-grid-tile>
         </span>
@@ -45,8 +45,8 @@
     </div>
 
     <div class="error-message-container">
-        <span class="error-message">{{errorMessage}}</span>
+        <span class="error-message">Amount remaining: {{depositAmount - totalBeingDeposited | currency:'USD':true}}</span>
     </div>
 
-    <button color="accent" md-raised-button [disabled]="false" (click)="depositCheck()">Deposit</button>
+    <button color="accent" md-raised-button [disabled]="depositAmount != totalBeingDeposited || depositAmount <= 0" (click)="depositCheck()">Deposit</button>
 </div>

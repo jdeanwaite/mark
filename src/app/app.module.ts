@@ -9,12 +9,13 @@ import {AccountCardComponent} from './components/account-card/account-card.compo
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AppRoutingModule} from "./modules/app-routing/app-routing.module";
 import {SidenavService} from "./services/sidenav.service";
-import { AccountComponent } from './components/account/account.component';
-import { TransferComponent } from './components/transfer/transfer.component';
-import { TransactionComponent } from './components/transaction/transaction.component';
-import { AccountCreationComponent } from './components/account-creation/account-creation.component';
-import { AccountEditComponent } from './components/account-edit/account-edit.component';
-import { DepositCheckComponent } from './components/deposit-check/deposit-check.component';
+import {AccountComponent} from './components/account/account.component';
+import {TransferComponent} from './components/transfer/transfer.component';
+import {TransactionComponent} from './components/transaction/transaction.component';
+import {AccountCreationComponent} from './components/account-creation/account-creation.component';
+import {AccountEditComponent} from './components/account-edit/account-edit.component';
+import {DepositCheckComponent} from './components/deposit-check/deposit-check.component';
+import {AccountService} from "./services/account.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DepositCheckComponent } from './components/deposit-check/deposit-check.
     AppRoutingModule
   ],
   providers: [
-    SidenavService
+    SidenavService,
+    AccountService,
   ],
   bootstrap: [AppComponent]
 })

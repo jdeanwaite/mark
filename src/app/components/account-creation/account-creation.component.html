@@ -22,7 +22,7 @@
   <div class="content-30">
     <form>
       <md-input-container>
-        <input mdInput type="text" placeholder="Account Name" step="any">
+        <input [(ngModel)]="accountName" mdInput type="text" placeholder="Account Name" step="any" name="accountName">
       </md-input-container>
     </form>
   </div>
@@ -31,5 +31,5 @@
     <span class="error-message">{{errorMessage}}</span>
   </div>
 
-  <button color="accent" md-raised-button [disabled]="false" (click)="createAccount()">Create</button>
+  <button color="accent" md-raised-button (click)="createAccount()" [disabled]="!accountName">Create</button>
 </div>

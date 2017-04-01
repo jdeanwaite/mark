@@ -41,6 +41,11 @@ let routes: Routes = [
   },
 
   {
+    path: 'transaction/:id',
+    component: TransactionComponent
+  },
+
+  {
     path: 'newAccount',
     component: AccountCreationComponent
   },

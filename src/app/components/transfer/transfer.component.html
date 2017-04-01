@@ -21,19 +21,19 @@
 
     <div class="content-30">
         <form>
-            <md-select placeholder="Source Account">
-                <md-option *ngFor="let account of accounts" [value]="account.id">{{account.name}}</md-option>
+            <md-select placeholder="Source Account" [(ngModel)]="sourceAccount" name="sourceAccount" (change)="sourceAccountSelected()">
+                <md-option *ngFor="let account of selectableSourceAccounts" [value]="account.id">{{account.name}}</md-option>
             </md-select>
             <br>
-            <md-select placeholder="Destination Account">
-                <md-option *ngFor="let account of accounts" [value]="account.id">{{account.name}}</md-option>
+            <md-select placeholder="Destination Account" [(ngModel)]="destinationAccount" name="destinationAccount" (change)="destinationAccountSelected()">
+                <md-option *ngFor="let account of selectableDestinationAccounts" [value]="account.id">{{account.name}}</md-option>
             </md-select>
             <md-input-container>
                 <span mdPrefix>$</span>
-                <input mdInput type="number" placeholder="&nbsp;Amount to Transfer" step="any">
+                <input mdInput type="number" placeholder="&nbsp;Amount to Transfer" step="any" name="transferAmount" [(ngModel)]="transferAmount">
             </md-input-container>
             <md-input-container>
-                <textarea mdInput placeholder="Reason"></textarea>
+                <textarea mdInput placeholder="Reason" [(ngModel)]="reason" name="reason"></textarea>
             </md-input-container>
         </form>
     </div>
@@ -42,5 +42,5 @@
         <span class="error-message">{{errorMessage}}</span>
     </div>
 
-    <button color="accent" md-raised-button [disabled]="false" (click)="submitTransfer()">Transfer</button>
+    <button color="accent" md-raised-button [disabled]="!(sourceAccount && destinationAccount && transferAmount && reason)" (click)="submitTransfer()">Transfer</button>
 </div>

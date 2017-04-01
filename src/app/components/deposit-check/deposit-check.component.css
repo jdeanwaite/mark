@@ -6,3 +6,9 @@ md-input-container {
 button {
     min-height: 50px;
 }
+
+.error-message-container {
+    padding: 5px;
+    color: rgba(0, 0, 0, .5);
+    text-align: center;
+}
